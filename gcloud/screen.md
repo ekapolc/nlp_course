@@ -1,4 +1,4 @@
-** Screen **
+## Screen ##
 
 Normally, if you lost your internet connection while running a jupyter kernel, your work will be lost, since the shell will terminate along with jupyter. To make things easier, we recommend using
 screen to manage your shell.
