@@ -1,9 +1,10 @@
 This part of the guide will walk you through the setup of the VM you created. It is divided into three main parts
 
-1. IP assignment and firewall setup
-2. Disk management
-3. Jupyter configuration
+1. [IP assignment and firewall setup](ip)
+2. [Disk management](disk)
+3. [Jupyter configuration](jupyter)
 
+<a name='ip'></a>
 # 1. IP assignment and firewall setup
 
 ### Getting a Static IP Address ###
@@ -40,3 +41,35 @@ Click on the blue **CREATE FIREWALL RULE** button. Enter whatever name you want:
 ### Adding a Firewall rule for Tensorboard ###
 
 Add another firewall rule for Tensorboard (we will use this later in the class). This can be done by repeating the above process for port **tcp:6006**
+
+<a name='disk'></a>
+## Connect to Your Virtual Instance ##
+Now that you have created your virtual GCE, you want to be able to connect to it from your computer. The rest of this tutorial goes over how to do that using the command line (Gcloud SDK). The easiest way to connect is using the gcloud compute command below. The tool takes care of authentication for you. On OS X, run:
+
+```
+./<DIRECTORY-WHERE-GOOGLE-CLOUD-IS-INSTALLED>/bin/gcloud compute ssh --zone=asia-east1-a <YOUR-INSTANCE-NAME>
+```
+
+where <YOUR-INSTANCE-NAME> should be homework4. See [this page](https://cloud.google.com/compute/docs/instances/connecting-to-instance) for more detailed instructions. You are now ready to work on Google Cloud. 
+
+You should be logged in with the same name as your username on your local computer. We have setup the development environment under my user account (ekapolc). To switch user, do
+
+```
+sudo su ekapolc
+```
+
+You will notice that you are now under my user account.
+
+## Checking your GPU ##
+
+First, let's check your GPU. Do
+
+```
+nvidia-smi
+```
+
+You should see something like the screen below:
+
+![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/nvidia-smi.png "nvidia-smi.png")
+
+The top table shows the GPUs available. You should see one Telsa K80, called GPU number 0. The bottom table shows the processes that use GPUs. You can verify if things are running properly on the GPU by monitoring nvidia-smi.
