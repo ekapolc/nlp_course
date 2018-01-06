@@ -4,6 +4,8 @@ This part of the guide will walk you through the setup of the VM you created. It
 2. Disk management
 3. Jupyter configuration
 
+# 1. IP assignment and firewall setup
+
 ### Getting a Static IP Address ###
 In order to easily access the VM, we want to assign a fixed IP address to the machine. Note that Google will also charge a very small amount of money to the static IP, so be sure to close it after the course is done.
 
@@ -37,3 +39,4 @@ Click on the blue **CREATE FIREWALL RULE** button. Enter whatever name you want:
 
 ### Adding a Firewall rule for Tensorboard ###
 
+Add another firewall rule for Tensorboard (we will use this later in the class). This can be done by repeating the above process for port **tcp:6006**
