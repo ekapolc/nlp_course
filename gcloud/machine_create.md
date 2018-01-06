@@ -4,40 +4,30 @@ After you recieved a confirmation email for the quota increase, you can now star
 
 Setting up a GPU instance from scratch is time consuming (took me half a day), so we provide you with a VM image that you can use. GCloud does not support publically shared images (yet), but it can be shared to specific people. In order for us to be able to share the image, post your email in the specific discusssion topic on Piazza.
 
-After getting access to the image, use gcloud SDK to create the instance with the command
+After getting access to the image, go to the [compute engine page](https://console.cloud.google.com/compute/). Make sure the top of the page next to Google Cloud Platform shows the correct project name.
 
-```
-gcloud compute instances create homework --image nlp --image-project august-ensign-168512 --no-boot-disk-auto-delete --machine-type n1-standard-8 --zone asia-east1-a
-```
+Click ** VM Instances ** and click ** create instance **
 
-*--image-project* refers to my GCloud account, where you will be grabbing the VM image *nlp* from.
+1. Name your instance
+2. Zone select **asia-east-1a**
+3. Machine type **4 vCPUs.** click **customize.** Click on **GPUs**, select **1** and **NVIDIA Tesla K80** as shown below
 
-If this completes successfully, you should see an instance in the GCloud web console.
+![alt text](https://github.com/ekapolc/nlp_course/raw/master/gcloud/image/create_vm1.png "create_vm1.png")
+
+4. Boot disk click **change.** **Custom images** tab select **Cattern Assignment Central** then **nlp** and click **select**
+
+![alt text](https://github.com/ekapolc/nlp_course/raw/master/gcloud/image/boot_disk.png "boot_disk.png")
+
+5. Select **allow http** and **allow https** for Jupyter notebook connections
+6. Click **Management, disks, networking, SSH keys** to expand. Go to the **Disks** tab and **uncheck** the **Delete boot disk when instance is deleted.** Click **Add item.** then **Select...** and **Create disk**. In the create disk tab, select **none (blank disk)** under source type. Set **50** GB as the size. Click **create**
+
+![alt text](https://github.com/ekapolc/nlp_course/raw/master/gcloud/image/create_disk.png "create_disk.png")
+
+You screen should look like below.
+
+![alt text](https://github.com/ekapolc/nlp_course/raw/master/gcloud/image/create_vm2.png "create_vm2.png")
 
 **NOTE: Use your GPUs sparingly because they are expensive. See the pricing [here](https://cloud.google.com/compute/pricing#gpus "title").**
-
-## Setting up the machine ##
-
-The current machine has no gpu in it. We need to do one additional tweak to add a GPU to the instance. To edit the virtual instance, go to the **Compute Engine** menu on the left column of your dashboard (the cloud website) and click on **VM instances**. You should see an instance name **homework
-**. Click on the 3 dots next to homework, select **stop** to stop the instance. Stopping the instance shut downs the machine, but you can turn it back on (You will be charged only when the machine is turned on. You can also delete the instance after you are done with the assignment afterwards.) Once the instance is stopped, the green color in front of the instance name should become grey as shown on the picture below.
-
-![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/google-cloud-start-stop-instance.png "google-cloud-start-stop-instance.png")
-
-Click on the instance name (homework) to edit the instance. Here, we will add a gpu and do some additional tweaking. Click on **EDIT** at the top right next to VM instance details. Under **machine type** click **customize**. Select **GPUs**, change the number of **GPUs** to **1** and **GPU type** to **NVIDIA Tesla K80**. Scroll down to Firewalls, click **Allow HTTP traffic** and **Allow HTTPS traffic**.
-
-![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/google-cloud-edit-instance.png "google-cloud-edit-instance.png")
-
-## Adding a data disk ##
-
-The image we provided only have 10GB of disk space. You will need more in order to finish the assignment. 
-
-On the edit instance page, scroll to the **additional disks**. Click **Add item**.
-
-![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/google-cloud-additional-disks.png "google-cloud-additional-disks.png")
-
-Under disk creation, name the new disk, select standard persistent disk, None (blank disk), and 50 GB. Click create, and save the instance edition.
-
-![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/google-cloud-disk-create.png "google-cloud-disk-create.png")
 
 ## Connect to Your Virtual Instance ##
 Now that you have created your virtual GCE, you want to be able to connect to it from your computer. The rest of this tutorial goes over how to do that using the command line (Gcloud SDK). The easiest way to connect is using the gcloud compute command below. The tool takes care of authentication for you. On OS X, run:
@@ -46,7 +36,7 @@ Now that you have created your virtual GCE, you want to be able to connect to it
 ./<DIRECTORY-WHERE-GOOGLE-CLOUD-IS-INSTALLED>/bin/gcloud compute ssh --zone=asia-east1-a <YOUR-INSTANCE-NAME>
 ```
 
-where <YOUR-INSTANCE-NAME> should be homework. See [this page](https://cloud.google.com/compute/docs/instances/connecting-to-instance) for more detailed instructions. You are now ready to work on Google Cloud. 
+where <YOUR-INSTANCE-NAME> should be homework. Another method is to click the **SSH** button next to the instance name to open a connection via the browser window. See [this page](https://cloud.google.com/compute/docs/instances/connecting-to-instance) for more detailed instructions. You are now ready to work on Google Cloud. 
 
 You should be logged in with the same name as your username on your local computer. We have setup the development environment under my user account (ekapolc). To switch user, do
 
@@ -101,11 +91,18 @@ sudo ln -s /mnt/disks/data /data
 
 You can now access the new disk at /data
 
+Verify that the disk is mounted properly by
+
+```
+ls /data
+```
+If you see **lost+found** the disk is mounted properly.
+
 Finally, we want the OS to remember that we added this disk at this location. We need to edit a system file for this. Use the following commands:
 
 ```
 sudo cp /etc/fstab /etc/fstab.backup
-echo UUID=`sudo blkid -s UUID -o value /dev/sdb` /mnt/disks/disk-1 ext4 discard,defaults,nofail 0 2 | sudo tee -a /etc/fstab
+echo UUID=`sudo blkid -s UUID -o value /dev/sdb` /mnt/disks/data ext4 discard,defaults,nofail 0 2 | sudo tee -a /etc/fstab
 ```
 
 # Trouble Shooting #
