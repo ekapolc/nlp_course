@@ -6,7 +6,7 @@ Setting up a GPU instance from scratch is time consuming (took me half a day), s
 
 After getting access to the image, go to the [compute engine page](https://console.cloud.google.com/compute/). Make sure the top of the page next to Google Cloud Platform shows the correct project name.
 
-Click ** VM Instances ** and click ** create instance **
+Click **VM Instances** and click **create instance**
 
 1. Name your instance
 2. Zone select **asia-east-1a**
