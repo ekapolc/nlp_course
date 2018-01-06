@@ -1,4 +1,4 @@
-### Gcloud setup
+# Gcloud setup Guide #
 
 # BIG REMINDER: Make sure you stop your instances! #
 Don't forget to stop your instance when you are done (by clicking on the stop button at the top of the page showing your instances). You can restart your instance and the downloaded software will still be available. 
@@ -11,4 +11,4 @@ After you are done with your assignments, you should delete the instance, delete
 3. [Create the VM](machine_create.md)
 4. [Setting up the VM](machine_setup.md)
 
-![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/forgot.jpg "I forgot to shut down my instance")
+![alt text](https://github.com/ekapolc/nlp_course/raw/master/gcloud/image/nooo.jpg "no money")
