@@ -9,5 +9,6 @@ After you are done with your assignments, you should delete the instance, delete
 1. [Signing up](signup.md)
 2. [Setup quota warnings](setup_quota_warnings.md)
 3. [Create the VM](machine_create.md)
+4. [Setting up the VM](machine_setup.md)
 
 ![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/forgot.jpg "I forgot to shut down my instance")
