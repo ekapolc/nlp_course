@@ -4,10 +4,10 @@ This part of the guide describe how to have GCloud email you if you are exceedin
 
 To setup the quota first go to [GCloud Console](https://console.cloud.google.com/). Click on the three bars on the top left and click *Billing*. 
 
-![alt text](https://github.com/ekapolc/nlp_course/raw/master/common/gcloud/image/billing.png "Billing")
+![alt text](https://github.com/ekapolc/nlp_course/raw/master/gcloud/image/billing.png "Billing")
 
 *Make sure you have the correct project selected*. It is the project you created in the previous part. Select *Budget & alerts*
 
-![alt text](https://github.com/ekapolc/nlp_course/raw/master/common/gcloud/image/budget.png "budget")
+![alt text](https://github.com/ekapolc/nlp_course/raw/master/gcloud/image/budget.png "budget")
 
 
