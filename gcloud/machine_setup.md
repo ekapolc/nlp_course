@@ -1,8 +1,7 @@
 This part of the guide will walk you through the setup of the VM you created. It is divided into three main parts
 
 1. [IP assignment and firewall setup](#ip-assignment-and-firewall-setup)
-2. [Disk management](disk)
-3. [Jupyter configuration](jupyter)
+2. [Jupyter configuration](#jupyter-configuration)
 
 # IP assignment and firewall setup
 
@@ -41,34 +40,94 @@ Click on the blue **CREATE FIREWALL RULE** button. Enter whatever name you want:
 
 Add another firewall rule for Tensorboard (we will use this later in the class). This can be done by repeating the above process for port **tcp:6006**
 
-<a name='disk'></a>
-## Connect to Your Virtual Instance ##
-Now that you have created your virtual GCE, you want to be able to connect to it from your computer. The rest of this tutorial goes over how to do that using the command line (Gcloud SDK). The easiest way to connect is using the gcloud compute command below. The tool takes care of authentication for you. On OS X, run:
+# Jupyter configuration
+
+### Configuring Jupyter Notebook ###
+The following instructions are excerpts from [this page](https://haroldsoh.com/2016/04/28/set-up-anaconda-ipython-tensorflow-julia-on-a-google-compute-engine-vm/) that has more detailed instructions.
+
+The Jupyter configuration file `jupyter_notebook_config.py` is the default config file, jupyter uses when starting. We will create one by (assuming you are login as ekapolc and already activate the virtualenv)
 
 ```
-./<DIRECTORY-WHERE-GOOGLE-CLOUD-IS-INSTALLED>/bin/gcloud compute ssh --zone=asia-east1-a <YOUR-INSTANCE-NAME>
+rm ~/.jupyter/jupyter_notebook_config.py
+jupyter notebook --generate-config
 ```
 
-where <YOUR-INSTANCE-NAME> should be homework4. See [this page](https://cloud.google.com/compute/docs/instances/connecting-to-instance) for more detailed instructions. You are now ready to work on Google Cloud. 
-
-You should be logged in with the same name as your username on your local computer. We have setup the development environment under my user account (ekapolc). To switch user, do
+Using your favorite editor (vim, emacs etc...) add the following lines to the config file, (e.g.: /home/ekapolc/.jupyter/jupyter_notebook_config.py):
 
 ```
-sudo su ekapolc
+c = get_config()
+
+c.NotebookApp.ip = '*'
+
+c.NotebookApp.open_browser = False
+
+c.NotebookApp.port = <PORT-NUMBER>
 ```
 
-You will notice that you are now under my user account.
+Where \<PORT-NUMBER\> is the same number you used in the prior section (not 6006). Save your changes and close the file. 
 
-## Checking your GPU ##
+### Securing your Jupyter Notebook server ###
 
-First, let's check your GPU. Do
+In this section, we will add a password to your Jupyter Notebook server (otherwise anyone that knows the ip and port can access your Jupyter server and do nasty things to it).
+
+We start by setting up a password. Do this running a simple script we provide. You will be asked for a password twice, then it will generate a hashed verion of your password.
+```
+wget --no-check-certificate https://raw.githubusercontent.com/ekapolc/cattern/master/TUMKUD/mkpassword.py
+python mkpassword.py
+```
+Take note of the output (sha1:XXXXXXXXXXX). 
+
+Update `jupyter_notebook_config.py` with
+```
+c.NotebookApp.password = 'sha1:XXXXXXXXXXX
+```
+
+Even if we require a password to login, someone can still get access to our password if our connection is non-encrypted. You can start the notebook to communicate via a secure protocol mode by setting the certfile option to a self-signed certificate which can be easily created by
 
 ```
-nvidia-smi
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem
 ```
 
-You should see something like the screen below:
+You will be asked with many prompts, but you can keep hitting Enter until it is done.
 
-![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/nvidia-smi.png "nvidia-smi.png")
+Then move your cert and key to .jupyter
 
-The top table shows the GPUs available. You should see one Telsa K80, called GPU number 0. The bottom table shows the processes that use GPUs. You can verify if things are running properly on the GPU by monitoring nvidia-smi.
+```
+mv mykey.key ~/.jupyter/
+mv mycert.pem ~/.jupyter/
+```
+
+Update your `jupyter_notebook_config.py` with
+
+```
+c.NotebookApp.keyfile = '/home/ekapolc/.jupyter/mykey.key'
+c.NotebookApp.certfile = '/home/ekapolc/.jupyter/mycert.pem'
+```
+
+Now you are done with the setup and ready to access your Notebook
+
+### Launching and connecting to Jupyter Notebook ###
+The instructions below assume that you have SSH'd into your GCE instance using the prior instructions, and have successfully configured Jupyter Notebook.
+
+If you haven't already done so, activate your virtualenv by running:
+
+```
+source .env/bin/activate
+```
+
+Launch Jupyter notebook using:
+
+```
+jupyter-notebook --no-browser --port=<PORT-NUMBER> 
+```
+
+Where \<PORT-NUMBER\> is what you wrote in the prior section.
+
+On your local browser, if you go to https://\<YOUR-EXTERNAL-IP-ADDRESS>:\<PORT-NUMBER\>, you will be asked for a password, and then you should see something like the screen below. My value for \<YOUR-EXTERNAL-IP-ADDRESS\> was 104.196.224.11 as mentioned above. You should now be able to start working on your assignments.
+
+![alt text](https://github.com/ekapolc/cattern/raw/master/common/images/jupyter-screen.png "jupyter-screen.png")
+
+If you do not see this, there are several pitfalls.
+
+1. Not using https when connecting.
+2. If your key and cert files are mis-configured, the Jupyter page will fail to load. Double check that you points to the correct files.
