@@ -1,11 +1,10 @@
 This part of the guide will walk you through the setup of the VM you created. It is divided into three main parts
 
-1. [IP assignment and firewall setup](ip)
+1. [IP assignment and firewall setup](#ip-assignment-and-firewall-setup)
 2. [Disk management](disk)
 3. [Jupyter configuration](jupyter)
 
-<a name='ip'></a>
-# 1. IP assignment and firewall setup
+# IP assignment and firewall setup
 
 ### Getting a Static IP Address ###
 In order to easily access the VM, we want to assign a fixed IP address to the machine. Note that Google will also charge a very small amount of money to the static IP, so be sure to close it after the course is done.
