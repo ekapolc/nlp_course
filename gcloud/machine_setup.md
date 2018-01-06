@@ -1,4 +1,4 @@
-This part of the guide will walk you through the setup of the VM you created. It is divided into three main parts
+This part of the guide will walk you through the setup of the VM you created. It is divided into two main parts
 
 1. [IP assignment and firewall setup](#ip-assignment-and-firewall-setup)
 2. [Jupyter configuration](#jupyter-configuration)
