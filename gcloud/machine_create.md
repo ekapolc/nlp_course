@@ -7,10 +7,10 @@ Setting up a GPU instance from scratch is time consuming (took me half a day), s
 After getting access to the image, use gcloud SDK to create the instance with the command
 
 ```
-gcloud compute instances create homework --image NLP --image-project august-ensign-168512 --no-boot-disk-auto-delete --machine-type n1-standard-8 --zone asia-east1-a
+gcloud compute instances create homework --image nlp --image-project august-ensign-168512 --no-boot-disk-auto-delete --machine-type n1-standard-8 --zone asia-east1-a
 ```
 
-*--image-project* refers to my GCloud account, where you will be grabbing the VM image *NLP* from.
+*--image-project* refers to my GCloud account, where you will be grabbing the VM image *nlp* from.
 
 If this completes successfully, you should see an instance in the GCloud web console.
 
