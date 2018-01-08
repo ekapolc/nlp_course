@@ -11,7 +11,7 @@ To launch screen
 screen -U -S <session name>
 ```
 
-** Note launching screen under my username will cause an error. Either do `sudo screen` or launch screen then `sudo su` inside the screen.**
+**Note launching screen under my username will cause an error. Either do `sudo screen` or launch screen then `sudo su` inside the screen.**
 
 You will be brought into a new shell session. This session will remain until you tell it to terminate.
 
