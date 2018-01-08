@@ -12,6 +12,6 @@ After you are done with your assignments, you should delete the instance, delete
 4. [Setting up the VM](4machine_setup.md)
 5. [Launching Jupyter via Screen](5screen.md)
 6. [Transfering files to/from VM](6file_transfers.md)
-6. [Stopping and deleting your instances](7stop.md)
+7. [Stopping and deleting your instances](7stop.md)
 
 ![alt text](https://github.com/ekapolc/nlp_course/raw/master/gcloud/image/nooo.jpg "no money")
