@@ -11,6 +11,8 @@ To launch screen
 screen -U -S <session name>
 ```
 
+** Note launching screen under my username will cause an error. Either do `sudo screen` or launch screen then `sudo su` inside the screen.**
+
 You will be brought into a new shell session. This session will remain until you tell it to terminate.
 
 To detach from this session (think of it as having the session runs in the background instead of the foreground), press CTL-A and CTL-D (one after the other). You will be brought back to the original terminal that launches the screen session.
