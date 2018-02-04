@@ -10,6 +10,8 @@ mv BEST2010 BEST2010-prev
 wget --no-check-certificate https://raw.githubusercontent.com/ekapolc/nlp_course/master/HW3/thai_skip_gram_homework_for_student.ipynb
 wget --no-check-certificate https://github.com/ekapolc/nlp_course/raw/master/HW3/BEST2010.zip
 unzip BEST2010.zip
+cd /data
+wget --no-check-certificate https://www.dropbox.com/s/rbhufb6uy22k338/my_skipgram32_weights.h5
 ```
 
 Submit the completed notebook file on MyCourseVille (4.5 points total, 0.75 points per 1 TODO)
