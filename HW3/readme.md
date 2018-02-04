@@ -7,6 +7,7 @@ Note that this BEST2010 dataset has not been preprocessed, it contains the same 
 
 ```
 mv BEST2010 BEST2010-prev
+wget --no-check-certificate https://raw.githubusercontent.com/ekapolc/nlp_course/master/HW3/thai_skip_gram_demo.ipynb
 wget --no-check-certificate https://raw.githubusercontent.com/ekapolc/nlp_course/master/HW3/thai_skip_gram_homework_for_student.ipynb
 wget --no-check-certificate https://github.com/ekapolc/nlp_course/raw/master/HW3/BEST2010.zip
 unzip BEST2010.zip
