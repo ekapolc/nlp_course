@@ -15,6 +15,13 @@ cd /data
 wget --no-check-certificate https://www.dropbox.com/s/rbhufb6uy22k338/my_skipgram32_weights.h5
 ```
 
+If you have issue with character encoding, you might have to do the following:
+```
+import codecs
+with codec.open(cwd+"/corpora/wiki/thwiki_chk.txt", encoding='utf-8') as f:
+	......
+```
+
 Submit the completed notebook file on MyCourseVille (4.5 points total, 0.75 points per 1 TODO)
 
 Submit a screenshot of the closed instance (0.5 points)
