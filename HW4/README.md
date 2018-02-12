@@ -26,7 +26,7 @@ To download materials for this homework, run the commands below in your homework
 
 ```
 wget https://www.dropbox.com/s/tuvrbsby4a5axe0/resources.zip
-wget --no-check-certificate https://raw.githubusercontent.com/ekapolc/nlp_course/master/HW4/demo
+wget --no-check-certificate https://raw.githubusercontent.com/ekapolc/nlp_course/master/HW4/demo.ipynb
 wget --no-check-certificate https://raw.githubusercontent.com/ekapolc/nlp_course/master/HW4/HW4-POS Tagging.ipynb
 unzip resources.zip
 ```
