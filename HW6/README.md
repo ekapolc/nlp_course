@@ -10,6 +10,6 @@ wget --no-check-certificate https://raw.githubusercontent.com/ekapolc/nlp_course
 
 ```
 
-Complete `HW6_TextGeneration.ipynb` and submit the ipynb file to mycourseville ( points per todo)
+Complete `HW6_TextGeneration.ipynb` and submit the ipynb file to mycourseville (0.9 points per todo)
 Submit a screen shot of the closed instance (0.5 points)
 
