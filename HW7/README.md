@@ -19,10 +19,13 @@ If your bot is a task-specific one, you must include a `intent tag` or `frame ta
 
 You might have the conversation do something like this
 
-`You: I want to order <quantity>one<\quantity> <type>hawaiian pizza<\type>.`
+You: `I want to order <quantity>one<\quantity> <type>hawaiian pizza<\type>.`
+
 Knowing that it is missing only the location the bot will ask
-`Bot: Where do you want this delivered?`
-`You: At <location>19th floor Building number 4 Chula Engineering<\location>`
+
+Bot: `Where do you want this delivered?`
+
+You: `At <location>19th floor Building number 4 Chula Engineering<\location>`
 
 This task can now be considered as PoS tagging and can be solved with any PoSTagger you like. The above example count as two utterances. 
 
