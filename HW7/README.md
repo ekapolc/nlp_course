@@ -15,7 +15,11 @@ To get ideas, https://botlist.co/ is a collection of bots. You can also consult 
 ## Make your corpora
 After selecting the domain, list 100xN questions/utterances that can be given to the chatbot (where N is the number of people in your group). 
 
-If your bot is a task-specific one, you must include a `intent tag` or `frame tag`. Examples of intent tagging are already provided in the intent classification assignment. `Frame tags` refer to tags that is related to the task at hand. For example, if you are making a bot for ordering pizza. You know that a complete order would have 1. the type of pizza 2. the amount of pizza 3. the address to deliver the pizza.
+If your bot is a task-specific one, you must include a `intent tag` or `frame tag`. Examples of intent tagging are already provided in the intent classification assignment. `Frame tags` refer to tags that is related to the task at hand. For example, if you are making a bot for ordering pizza. You know that a complete order would have:
+
+1. the type of pizza 
+2. the amount of pizza 
+3. the address to deliver the pizza.
 
 You might have the conversation do something like this
 
