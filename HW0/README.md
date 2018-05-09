@@ -1,5 +1,7 @@
 # HW0 Hello GCloud #
 
+## Note: GCloud have recently changed their policy regarding GPUs (around Feb 2018). Any request for GPU quota will require a payment of 35 USD. ##
+
 Setup a GCloud account by following the instructions in [GCloud setup](../gcloud/README.md)
 
 Once you finish, try running a simple neural network on MNIST
