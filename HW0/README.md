@@ -1,6 +1,8 @@
 # HW0 Hello GCloud #
 
-## Note: GCloud have recently changed their policy regarding GPUs (around Feb 2018). Any request for GPU quota will require a payment of 35 USD. ##
+## Note: GCloud have recently changed their interal policy regarding GPUs (around Feb 2018). Any request for GPU quota will require a payment of 35 USD. ##
+## Note2: GCloud have recently changed their internal policy regarding GPUs again (around May 2018). You no longer need to pay 35 USD, but the quota granting process takes longer. This might change again ##
+
 
 Setup a GCloud account by following the instructions in [GCloud setup](../gcloud/README.md)
 
