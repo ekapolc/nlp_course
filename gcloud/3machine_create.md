@@ -2,7 +2,7 @@
 
 After you recieved a confirmation email for the quota increase, you can now start a GPU instance.
 
-Setting up a GPU instance from scratch is time consuming (took me half a day), so we provide you with a VM image that you can use. GCloud does not support publically shared images (yet), but it can be shared to specific people. In order for us to be able to share the image, post your email in the specific discusssion topic on Piazza.
+Setting up a GPU instance from scratch is time consuming (took me half a day), so we provide you with a VM image that you can use. GCloud does not support publically shared images (yet), but it can be shared to specific people. <del>In order for us to be able to share the image, post your email in the specific discusssion topic on Piazza.</del> The image sharing is now disabled, to get access to the image download from [Gdrive](https://drive.google.com/file/d/1iNw5v7nQvi3zGMj7wg9b8K-_og7JHQzs/view?usp=sharing) and follow the instructions [here](https://cloud.google.com/compute/docs/images/import-existing-image)
 
 After getting access to the image, go to the [compute engine page](https://console.cloud.google.com/compute/). Make sure the top of the page next to Google Cloud Platform shows the correct project name.
 
