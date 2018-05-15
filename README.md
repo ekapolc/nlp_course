@@ -10,7 +10,7 @@
 
 # List of assignments
 * [HW-0 Google Cloud setup](HW0) 
-For non GCloud users see [non-Gcloud](NonGCloud)
+For non GCloud users see specific instructions in each assignment.
 * [HW-1 Word Segmentation](HW1) Introduction to Keras, fully connected, CNN, and LSTM
 * [HW-2 Language Modeling](HW2) N-grams
 * [HW-3 Word Embeddings](HW3) Word embeddings and simple topic classification
