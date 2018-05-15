@@ -6,7 +6,7 @@
 [Here](syllabus.pdf)
 
 # Lectures
-[Slides](slides) [Videos](https://www.youtube.com/playlist?list=PLcBOyD1N1T-NP11DsVK9XcN54rvfGBb96)
+[Slides](slides), [Videos](https://www.youtube.com/playlist?list=PLcBOyD1N1T-NP11DsVK9XcN54rvfGBb96)
 
 # List of assignments
 * [HW-0 Google Cloud setup](HW0) 
